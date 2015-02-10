@@ -28,32 +28,34 @@ $GLOBALS['wgExtensionCredits']['parserhook'][] = array(
 	'version'        => '0.2.0'
 );
 
-$GLOBALS['wgMessagesDirs']['MeetingMinutes'] = __DIR__ . '/i18n';
-$GLOBALS['wgExtensionMessagesFiles']['MeetingMinutesMagic'] = __DIR__ . '/Magic.php';
+$GLOBALS['wgMessagesDirs']['Botcast'] = __DIR__ . '/i18n';
+$GLOBALS['wgExtensionMessagesFiles']['BotcastMagic'] = __DIR__ . '/Magic.php';
 
-// Autoload setup class (location of parser function definitions)
-$GLOBALS['wgAutoloadClasses']['MeetingMinutes\Setup'] = __DIR__ . '/Setup.php';
+// Autoload
+$GLOBALS['wgAutoloadClasses']['Botcast\Setup'] = __DIR__ . '/includes/Setup.php';
+$GLOBALS['wgAutoloadClasses']['Botcast\ParserFunction'] = __DIR__ . '/includes/ParserFunction.php';
+$GLOBALS['wgAutoloadClasses']['Botcast\PushToWiki'] = __DIR__ . '/includes/PushToWiki.php';
 
 // Setup parser functions
-$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'MeetingMinutes\Setup::setupParserFunctions';
-// $GLOBALS['wgHooks']['BeforePageDisplay'][] = 'MeetingMinutes\Setup::onBeforePageDisplay';
+$GLOBALS['wgHooks']['ParserFirstCallInit'][] = 'Botcast\Setup::setupParserFunctions';
 
 
-$ExtensionMeetingMinutesResourceTemplate = array(
-	'localBasePath' => __DIR__ . '/modules',
-	'remoteExtPath' => 'MeetingMinutes/modules',
-);
 
-$GLOBALS['wgResourceModules'] += array(
+// $ExtensionMeetingMinutesResourceTemplate = array(
+// 	'localBasePath' => __DIR__ . '/modules',
+// 	'remoteExtPath' => 'MeetingMinutes/modules',
+// );
 
-	'ext.meetingminutes.form' => $ExtensionMeetingMinutesResourceTemplate + array(
-		'styles' => 'form/meeting-minutes.css',
-		'scripts' => array( 'form/SF_MultipleInstanceRefire.js', 'form/meeting-minutes.js' ),
-		// 'dependencies' => array( 'mediawiki.Uri' ),
-	),
+// $GLOBALS['wgResourceModules'] += array(
 
-	'ext.meetingminutes.template' => $ExtensionMeetingMinutesResourceTemplate + array(
-		'styles' => 'template/template.css',
-	),
+// 	'ext.meetingminutes.form' => $ExtensionMeetingMinutesResourceTemplate + array(
+// 		'styles' => 'form/meeting-minutes.css',
+// 		'scripts' => array( 'form/SF_MultipleInstanceRefire.js', 'form/meeting-minutes.js' ),
+// 		// 'dependencies' => array( 'mediawiki.Uri' ),
+// 	),
 
-);
+// 	'ext.meetingminutes.template' => $ExtensionMeetingMinutesResourceTemplate + array(
+// 		'styles' => 'template/template.css',
+// 	),
+
+// );
